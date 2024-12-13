@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -19,9 +21,9 @@
         <!-- Scripts -->
         @vite(['resources/css/navigation-menu.css'])
         @vite(['resources/css/sidebar.css'])
-
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/style.css'])
+        
 
         <!-- Styles -->
         @livewireStyles
@@ -41,10 +43,10 @@
                 <!-- Main Content Area -->
                 <div class="flex-1 flex flex-col pt-5">
                     <!-- Page Heading -->
-                    @if (isset($header))
-                    <header class="bg-white shadow">
+                    @hasSection('header')
+                    <header class="bg-white dark:bg-gray-800 shadow">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
+                            @yield('header')
                         </div>
                     </header>
                     @endif
@@ -53,9 +55,12 @@
                     {{-- <main class="flex-1">
                         @yield('content') 
                     </main> --}}
-                    <main class="overflow-y-auto">
-                        {{ $slot }}
+                    <main class="flex-1 p-4">
+                        @yield('content') 
                     </main>
+                    {{-- <main class="overflow-y-auto">
+                        {{ $slot }}
+                    </main> --}}
                 </div>
             </div>
             
