@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalLoanController;
 use App\Http\Controllers\LoanRequestController;
+use App\Http\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::resource('personalloans', PersonalLoanController::class);
 Route::resource('loanrequest', LoanRequestController::class);
 Route::put('/loanrequest/{id}/status', [LoanRequestController::class, 'updateStatus'])->name('loanrequest.updateStatus');
 
+Route::resource('/cities', CityController::class);
