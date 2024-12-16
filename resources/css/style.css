@@ -2,6 +2,7 @@ body {
     background-color: #f9f9f9;
 }
 
+
 .card {
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -179,3 +180,33 @@ table td {
 .add-btn:hover {
     background-color: #1f6691;
 }
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.img-fluid {
+    max-height: 200px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.text-muted {
+    font-weight: bold;
+    color: #333;
+}
+
+
+h6 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
