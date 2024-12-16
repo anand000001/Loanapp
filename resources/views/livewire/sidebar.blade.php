@@ -8,13 +8,7 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__name">
-                    <i class="fa fa-comment"></i>
-                    <span>Messages</span>
-                </a>
-            </li>
-            <li class="navbar__item">
-                <a href="#" class="navbar__name">
+                <a href="{{ route('customer.index') }}" class="navbar__name">
                     <i class="fa fa-users"></i>
                     <span>Customers</span>
                 </a>
@@ -22,19 +16,37 @@
             <li class="navbar__item">
                 <a href="#" class="navbar__name">
                     <i class="fa fa-briefcase"></i>
-                    <span>Projects</span>
+                    <span>Agents</span>
                 </a>
             </li>
             <li class="navbar__item">
                 <a href="#" class="navbar__name">
                     <i class="fa fa-folder"></i>
-                    <span>Resources</span>
+                    <span>City</span>
                 </a>
             </li>
             <li class="navbar__item">
                 <a href="#" class="navbar__name">
-                    <i class="fa fa-question-circle"></i>
-                    <span>Help</span>
+                    <i class="fa fa-hand-holding-usd"></i>
+                    <span>Collection</span>
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__name">
+                    <i class="fa fa-university"></i>
+                    <span>Group Loan</span>
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__name">
+                    <i class="fa fa-credit-card"></i>
+                    <span>Personal Loan</span>
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__name">
+                    <i class="fa fa-money-bill-wave"></i>
+                    <span>Loan Requests</span>
                 </a>
             </li>
             <li class="navbar__item">
