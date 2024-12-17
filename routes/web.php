@@ -8,6 +8,8 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupLoanController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SavingacController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +57,6 @@ Route::resource('/cities', CityController::class);
 Route::resource('groups', GroupController::class);
 
 Route::resource('grouploans',GroupLoanController::class);
+
+Route::resource('savingacs', SavingacController::class);
 
