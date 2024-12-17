@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class AgentController extends Controller
     public function index()
     {
         $agents = Agent::all();
-        return view('agent.index', compact('agents'));
+        $cities= City::all();
+        return view('agent.index', compact('agents','cities'));
     }
 
     /**
@@ -27,6 +29,7 @@ class AgentController extends Controller
      */
     public function create()
     {
+       
         return view('agent.create');
     }
 
@@ -38,13 +41,6 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'agent_name' => 'required|string|max:255',
-            'agent_code' => 'required|unique:agents,agent_code|string|max:10',
-            'city_list' => 'nullable|string|max:255',
-            'agent_password' => 'required|string|min:6',
-        ]);
-
         $user = User::create([
             'name' => $request->input('agent_name'),
             'email' => $request->input('agent_code'),
@@ -54,8 +50,9 @@ class AgentController extends Controller
         Agent::create([
             'agent_name' => $request->input('agent_name'),
             'agent_code' => $request->input('agent_code'),
-            'city_list' => $request->input('city_list'),
-            'agent_password' => bcrypt($request->input('agent_password')),
+            'city_list' => $request->input('city'),
+            'password' => $request->input('password'),
+            'user_id' => $user->id,
         ]);
 
         return redirect()->route('agent.index')->with('success', 'Agent created successfully.');

@@ -1,25 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PersonalLoan;
+use App\Models\Agent;
 
+use App\Models\Customer;
+use App\Models\PersonalLoan;
 use Illuminate\Http\Request;
 
 class PersonalLoanController extends Controller
 {
     public function index()
     {
-        $loans = PersonalLoan::all();
-        return view('personalloan.index', compact('loans')); // Pass data to the Blade view
+        // $loans = PersonalLoan::all();
+        $loans = Personalloan::with(['customer', 'agent'])->get();
+        $customers = Customer::all();
+        $agents = Agent::all();
+        return view('personalloan.index', compact('loans','customers','agents'));
     }    
 
-    // Show the form for creating a new loan
     public function create()
     {
-        return view('personalloan.create'); // Assuming you have a Blade template
+        return view('personalloan.create',compact('loans'));
     }
 
-    // Store a new loan
     public function store(Request $request)
     {
         // Remove the validation and directly create the loan

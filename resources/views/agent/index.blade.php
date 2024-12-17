@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <a class="mr-3 add-btn" href="{{route('agent.create')}}" data-bs-toggle="modal" data-bs-target="#addLoanModal">Add Agent
+    <a class="mr-3 add-btn" href="{{route('agent.create')}}" data-bs-toggle="modal" data-bs-target="#addLoanModal">Create Agent
     </a>
     <div class="table-title">Customer</div>
     <table>
@@ -24,32 +24,10 @@
             @foreach($agents as $index => $data)
             <tr>
                 <td>{{$index+1}}</td>
-                <td>{{$data->name}}</td>
-                <td>{{$data->email}}</td>
-                <td>{{$data->phone}}</td>
-                <td>{{$data->whatsapp_number}}</td>
-                
-                {{-- <td> --}}
-                    {{-- <div class="action-buttons">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </div> --}}
-                    {{-- <div class="flex space-x-2 items-center action-buttons">
-                        <a href="{{ route('customer.show', $data->id) }}" class="text-green-500 hover:text-blue-700" aria-label="View">
-                            <i class="fas fa-eye fa-sm"></i>
-                        </a>
-                        <a href="{{ route('customer.edit', $data->id) }}" class="text-green-500 hover:text-blue-700" aria-label="View">
-                            <i class="fas fa-eye fa-sm"></i>
-                        </a>
-                        <form action="{{ route('customer.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lead?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-orange-500 hover:text-red-700" aria-label="Delete">
-                                <i class="fas fa-trash fa-sm"></i>
-                            </button>
-                        </form>
-                    </div> --}}
-                {{-- </td> --}}
+                <td>{{$data->agent_name}}</td>
+                <td>{{$data->agent_code}}</td>
+                <td>{{$data->city->city_code ?? 'Unknown'}}</td>
+                <td>{{$data->password }}</td>
             </tr>
             @endforeach
         </tbody>
@@ -80,18 +58,20 @@
                             <label for="city" class="form-label">City</label>
                             <select name="city" id="city" class="form-select form-control">
                                 <option value="" selected>Select City</option>
-                                <option value="1">Agent 1</option>
-                                <option value="2">Agent 2</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->city_name }}-{{ $city->city_code }}</option>
+                                @endforeach
                             </select>
                         </div>
+                        
                         <div class="col-md-6">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="password" step="0.01">
                         </div>
                     </div>
                     <div class="text-left">
-                        <button type="submit" class="btn btn-warning btn-lg">
-                            Add Loan
+                        <button class="mr-3 add-btn" type="submit" class="btn btn-warning btn-lg">
+                            Add Agent
                         </button>
                     </div>
                 </form>
