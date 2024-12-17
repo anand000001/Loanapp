@@ -6,14 +6,16 @@ use App\Models\Group;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
-{
-    // Display the create form
+{   
+    public function index()
+    {
+        $groups = Group::all();
+        return view('group.index', compact('groups'));
+    }
     public function create()
     {
         return view('groups.create');
     }
-
-    // Store a new group
     public function store(Request $request)
     {
         $request->validate([
@@ -21,9 +23,7 @@ class GroupController extends Controller
             'group_leadername' => 'required|string|max:255',
             'group_leadernumber' => 'required|string|max:15',
         ]);
-
         Group::create($request->all());
-
         return redirect()->back()->with('success', 'Group created successfully.');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('header')
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        {{ __('Create Customer') }}
+        {{ __('Create Group Loan') }}
     </h2>
 @endsection
 
@@ -19,7 +19,6 @@
             <form action="{{ route('grouploans.store') }}" method="POST">
                 @csrf
                 <div class="row g-3">
-                    <!-- Group Selection -->
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="group_id" class="form-label">Select Group</label>
@@ -36,8 +35,6 @@
                             <small class="form-text text-muted">Please select group</small>
                         </div>
                     </div>
-
-                    <!-- Leader Details -->
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="leader_name" class="form-label">Leader Name</label>
@@ -45,7 +42,6 @@
                             <small class="form-text text-muted">Please enter leader name</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="leader_number" class="form-label">Leader Number</label>
@@ -53,8 +49,6 @@
                             <small class="form-text text-muted">Please enter leader number</small>
                         </div>
                     </div>
-
-                    <!-- Additional Details -->
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="teamlead_name" class="form-label">Team Lead Name</label>
@@ -62,7 +56,6 @@
                             <small class="form-text text-muted">Please enter team lead name</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="teamlead_number" class="form-label">Team Lead Number</label>
@@ -70,7 +63,6 @@
                             <small class="form-text text-muted">Please enter team lead number</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="totalgroup_member" class="form-label">Total Group Members</label>
@@ -78,7 +70,6 @@
                             <small class="form-text text-muted">Please enter total group members</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="loan_amount" class="form-label">Loan Amount</label>
@@ -86,7 +77,6 @@
                             <small class="form-text text-muted">Please enter loan amount</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="intrest_rate" class="form-label">Interest Rate (%)</label>
@@ -94,7 +84,6 @@
                             <small class="form-text text-muted">Please enter interest rate</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="type" class="form-label">Loan Type</label>
@@ -105,7 +94,6 @@
                             <small class="form-text text-muted">Please select loan type</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="collected_amount" class="form-label">Collected Amount</label>
@@ -113,7 +101,6 @@
                             <small class="form-text text-muted">Please enter collected amount</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="duration" class="form-label">Duration</label>
@@ -121,7 +108,6 @@
                             <small class="form-text text-muted">Please enter duration</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="disburse_rate" class="form-label">Disbursement Rate (%)</label>
@@ -129,7 +115,6 @@
                             <small class="form-text text-muted">Please enter disbursement rate</small>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="agent_id" class="form-label">Agent ID</label>
@@ -138,17 +123,13 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Submit Button -->
                 <div class="text-end">
-                    <button type="submit" class="btn btn-primary">Submit Group Loan</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-<!-- Group Loan Modal -->
 <div class="modal fade" id="groupLoanModal" tabindex="-1" aria-labelledby="groupLoanModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -179,9 +160,6 @@
         </div>
     </div>
 </div>
-
-<!-- Scripts -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
