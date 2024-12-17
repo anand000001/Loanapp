@@ -9,7 +9,7 @@ class PersonalLoan extends Model
 {
     use HasFactory;
 
-    protected $table = 'personalloan';
+    protected $table = 'personalloans';
 
     // Fillable fields
     protected $fillable = [
@@ -26,4 +26,15 @@ class PersonalLoan extends Model
         'next_emidate',
         'agent_code',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class, 'agent_id');
+    }
+
 }

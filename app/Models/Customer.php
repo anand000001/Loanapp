@@ -30,4 +30,9 @@ class Customer extends Model
         'current_state',
         'kyc_status',
     ];
+
+    public function personalloans()
+    {
+        return $this->hasMany(Personalloan::class, 'customer_id');
+    }
 }
