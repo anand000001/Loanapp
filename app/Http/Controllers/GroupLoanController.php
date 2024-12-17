@@ -8,14 +8,11 @@ use Illuminate\Http\Request;
 
 class GroupLoanController extends Controller
 {
-    // Display a list of all group loans
     public function index()
     {
         $groupLoans = GroupLoan::with('group')->get();
-        return view('grouploans.index', compact('groupLoans'));
+        return view('grouploan.index', compact('groupLoans'));
     }
-
-    // Show the form to create a new group loan
     public function create()
     {
         $groups = Group::all();
@@ -31,12 +28,9 @@ class GroupLoanController extends Controller
             ]);
         }
         return response()->json(['error' => 'Group not found'], 404);
-    }
-    
+    }   
     public function store(Request $request)
     {
-        // dd($request->all());
-        // Directly create a new group loan without validation
         GroupLoan::create([
             'group_id'          => $request->group_id,
             'leader_name'       => $request->leader_name,
@@ -53,26 +47,17 @@ class GroupLoanController extends Controller
             'agent_id'          => $request->agent_id,
             
         ]);
-        // dd("Agent");
-        // Return the same view with success message
         return redirect()->back()->with('success', 'Group created successfully.');
     }
-    
-
-    // Display a specific group loan
     public function show(GroupLoan $groupLoan)
     {
-        return view('grouploans.show', compact('groupLoan'));
+        
     }
-
-    // Show the form to edit an existing group loan
     public function edit(GroupLoan $groupLoan)
     {
         $groups = Group::all();
         return view('grouploans.edit', compact('groupLoan', 'groups'));
     }
-
-    // Update an existing group loan in the database
     public function update(Request $request, GroupLoan $groupLoan)
     {
         $request->validate([
@@ -90,13 +75,9 @@ class GroupLoanController extends Controller
             'disburse_rate' => 'required|numeric|min:0|max:100',
             'agent_id' => 'nullable|integer',
         ]);
-
         $groupLoan->update($request->all());
-
         return redirect()->route('grouploans.index')->with('success', 'Group loan updated successfully.');
     }
-
-    // Delete a group loan from the database
     public function destroy(GroupLoan $groupLoan)
     {
         $groupLoan->delete();

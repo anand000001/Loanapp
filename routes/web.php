@@ -55,3 +55,4 @@ Route::resource('/cities', CityController::class);
 Route::resource('groups', GroupController::class);
 
 Route::resource('grouploans',GroupLoanController::class);
+
