@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmireceiptController;
 use App\Http\Controllers\SavingacController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmiController;
 
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create'); // Display form
 Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store'); // Store details
@@ -55,4 +56,7 @@ Route::resource('emireceipts', EmireceiptController::class);
 
 
 Route::resource('savingacs', SavingacController::class);
+
+Route::resource('emis', EmiController::class);
+
 
