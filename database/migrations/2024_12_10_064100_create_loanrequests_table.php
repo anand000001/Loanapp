@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('loanrequests', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('customer_id');
             $table->decimal('loan_amount', 10, 2)->nullable();
             $table->integer('loan_duration')->nullable(); 
             $table->string('guarantor')->nullable();

@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Emireceipt;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class EmireceiptController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view emireceipt', ['only' => ['index']]);
+        $this->middleware('permission:edit emireceipt', ['only' => ['edit']]);
+        $this->middleware('permission:create emireceipt', ['only' => ['create']]);
+        $this->middleware('permission:destroy emireceipt', ['only' => ['destroy']]);
+    }
     
     public function index()
     {

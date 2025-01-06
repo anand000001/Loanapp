@@ -7,9 +7,18 @@ use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class AgentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view agent', ['only' => ['index']]);
+        $this->middleware('permission:edit agent', ['only' => ['edit']]);
+        $this->middleware('permission:create agent', ['only' => ['create']]);
+        $this->middleware('permission:destroy agent', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the agents.
      *

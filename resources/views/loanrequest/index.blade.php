@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('loanrequest.create') }}" class="btn btn-primary">+ Create New Loan Request</a>
+    {{-- <a href="{{ route('loanrequest.create') }}" class="btn btn-primary">+ Create New Loan Request</a> --}}
+    <a class="mr-3 add-btn" href="{{route('loanrequest.create')}}">Add Customer
+    </a>
     <div class="table-title">Loan Requests</div>
 
     <table class="table table-striped mt-3 align-middle">

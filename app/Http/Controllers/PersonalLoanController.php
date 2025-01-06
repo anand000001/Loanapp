@@ -6,9 +6,19 @@ use App\Models\Agent;
 use App\Models\Customer;
 use App\Models\PersonalLoan;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class PersonalLoanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view personalloan', ['only' => ['index']]);
+        $this->middleware('permission:edit personalloan', ['only' => ['edit']]);
+        $this->middleware('permission:create personalloan', ['only' => ['create']]);
+        $this->middleware('permission:destroy personalloan', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         // $loans = PersonalLoan::all();

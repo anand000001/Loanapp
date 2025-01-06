@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\GroupLoan;
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class GroupLoanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view grouploan', ['only' => ['index']]);
+        $this->middleware('permission:edit grouploan', ['only' => ['edit']]);
+        $this->middleware('permission:create grouploan', ['only' => ['create']]);
+        $this->middleware('permission:destroy grouploan', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $groupLoans = GroupLoan::with('group')->get();

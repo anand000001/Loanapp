@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
 
 class CityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view city', ['only' => ['index']]);
+        $this->middleware('permission:edit city', ['only' => ['edit']]);
+        $this->middleware('permission:create city', ['only' => ['create']]);
+        $this->middleware('permission:destroy city', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $cities = City::all();

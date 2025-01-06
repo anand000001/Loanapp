@@ -38,15 +38,27 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__name">
+                <a href="{{ route('personalloans.index') }}" class="navbar__name">
                     <i class="fa fa-credit-card"></i>
                     <span>Personal Loan</span>
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__name">
+                <a href="{{route('loanrequest.index')}}" class="navbar__name">
                     <i class="fa fa-money-bill-wave"></i>
                     <span>Loan Requests</span>
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="{{ route('emireceipts.index') }}" class="navbar__name">
+                    <i class="fa fa-receipt"></i>
+                    <span>EMI Receipts</span>
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__name">
+                    <i class="fa fa-piggy-bank"></i>
+                    <span>Savings A/C</span>
                 </a>
             </li>
             <li class="navbar__item">
