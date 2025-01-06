@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class GroupController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('permission:view group', ['only' => ['index']]);
+        $this->middleware('permission:edit group', ['only' => ['edit']]);
+        $this->middleware('permission:create group', ['only' => ['create']]);
+        $this->middleware('permission:destroy group', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $groups = Group::all();

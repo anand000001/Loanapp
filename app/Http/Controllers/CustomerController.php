@@ -6,9 +6,19 @@ use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view customer', ['only' => ['index']]);
+        $this->middleware('permission:edit customer', ['only' => ['edit']]);
+        $this->middleware('permission:create customer', ['only' => ['create']]);
+        $this->middleware('permission:destroy customer', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

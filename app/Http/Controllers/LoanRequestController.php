@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\LoanRequest;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class LoanRequestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view loanrequest', ['only' => ['index']]);
+        $this->middleware('permission:edit loanrequest', ['only' => ['edit']]);
+        $this->middleware('permission:create loanrequest', ['only' => ['create']]);
+        $this->middleware('permission:destroy loanrequest', ['only' => ['destroy']]);
+    }
     
     public function index()
     {

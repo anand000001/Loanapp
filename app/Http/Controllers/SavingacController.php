@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 use App\Models\Savingac;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 class SavingacController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view savingac', ['only' => ['index']]);
+        $this->middleware('permission:edit savingac', ['only' => ['edit']]);
+        $this->middleware('permission:create savingac', ['only' => ['create']]);
+        $this->middleware('permission:destroy savingac', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $userAccounts = Savingac::all();
